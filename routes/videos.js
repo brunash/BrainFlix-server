@@ -5,29 +5,31 @@ const fs = require('fs');
 
 function readVideos() {
 
-    const videosData = fs.readFileSync('../data/videos.json');
+    const videosData = fs.readFileSync('data/videos.json');
 
     const parsedVideos = JSON.parse(videosData);
     return parsedVideos;
 }
 
-function writeVideos(data) {
-    const stringifiedVideos = JSON.stringify(data);
-    fs.writeFileSync('./data/videos.json', stringifiedVideos);
-}
+// function writeVideos(data) {
+//     const stringifiedVideos = JSON.stringify(data);
+//     fs.writeFileSync('./data/videos.json', stringifiedVideos);
+// }
 
-router.get('./', (req, res) => {
+router.get('/', (req, res) => {
+    
+    
     const videos = readVideos();
     let filteredVideos = videos;
 
     if (req.query.id) {
-        filteredVideos = shoes.filter((id) => video.id === req.query.id);
-    }
+         filteredVideos = shoes.filter((id) => video.id === req.query.id);
+     }
     
-    res.status(200).json(filteredVideos);
+     res.status(200).json(filteredVideos);
 });
 
-router.get('/:videoId', (req, res) => {
+router.get('/videos:id', (req, res) => {
     const videos = readVideos();
 
     // Find the individual shoe that was requested
@@ -36,9 +38,12 @@ router.get('/:videoId', (req, res) => {
 
     // If it doesn't exist, send a 404 not found
     if (!individualVideo) {
-        return res.status(404).send('Shoe not found');
+        return res.status(404).send('Video not found');
     }
 
     // Respond with that individual shoe
     res.json(individualVideo);
 });
+
+
+module.exports = router;
