@@ -29,19 +29,16 @@ router.get('/', (req, res) => {
      res.status(200).json(filteredVideos);
 });
 
-router.get('/videos:id', (req, res) => {
+router.get('/:id', (req, res) => {
     const videos = readVideos();
 
-    // Find the individual shoe that was requested
-    // (The shoe whose id matches the id from the URL req.params.shoeId)
-    const individualVideo = videos.find((video) => video.id === req.params.videoId);
+    const individualVideo = videos.find((video) => video.id === req.params.id);
 
-    // If it doesn't exist, send a 404 not found
+  
     if (!individualVideo) {
         return res.status(404).send('Video not found');
     }
 
-    // Respond with that individual shoe
     res.json(individualVideo);
 });
 
