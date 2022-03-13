@@ -60,12 +60,34 @@ const newVideo = {
     image: "http://localhost:5500/images/tesla.jpg",
     title,
     description,
-    views,
-    likes: '0',
-    duration: "3:12", 
+    views: "1943",
+    likes: '1856',
+    duration: "3:69", 
     video: "",
     timestamp: new Date(),
-    comments
+    comments: [
+        {
+            name: "Elon Musk",
+            comment: "Love this guy!",
+            id: uuidv4(),
+            likes: 0,
+            timestamp: Date.now(),
+        },
+        {
+            name: "Satoshi Nakamoto",
+            comment: "Wow so happy this is working!",
+            id: uuidv4(),
+            likes: 0,
+            timestamp: "01/3/2009",
+        },
+        {
+            name: "Vitalik Buterin",
+            comment: "Much Wow!!",
+            id: uuidv4(),
+            likes: 0,
+            timestamp: "07/30/2015",
+        }
+    ]
 };
 
 videos.push(newVideo);
