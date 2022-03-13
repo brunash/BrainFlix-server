@@ -1,13 +1,11 @@
 require('dotenv').config();
 const express = require('express');
-
 const app = express();
 const cors = require('cors');
 const videoRoute = require('./routes/videos');
-const morgan = require('morgan');
 
 
-app.use(express.static('./public/images'))
+app.use(express.static('./public'))
 
 app.use(cors());
 
